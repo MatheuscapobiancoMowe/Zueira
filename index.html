@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como abrir seu MEI — passo a passo simples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b2a24;
+    --paper:#f6f2e9;
+    --card:#fffdf8;
+    --moss:#2f6b4f;
+    --moss-dark:#22503b;
+    --lime:#c8e65a;
+    --clay:#e2703a;
+    --line:#d9d2c2;
+    --muted:#5d6a63;
+    --shadow:0 18px 40px -22px rgba(31,46,38,.45);
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:'Fraunces',serif;line-height:1.08;letter-spacing:-.01em}
+
+  /* HERO */
+  header.hero{
+    background:
+      radial-gradient(120% 90% at 85% -10%, rgba(200,230,90,.28), transparent 55%),
+      linear-gradient(160deg,var(--moss-dark),var(--moss));
+    color:#f4f6ee;
+    padding:64px 0 78px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--lime);border:1px solid rgba(200,230,90,.4);
+    padding:6px 14px;border-radius:100px;margin-bottom:24px;
+  }
+  .hero h1{font-size:clamp(2.4rem,7vw,4.3rem);font-weight:900;max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--lime)}
+  .hero p.sub{margin-top:20px;font-size:clamp(1.05rem,2.6vw,1.3rem);max-width:46ch;color:#e4ebe0}
+  .hero .facts{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .fact{
+    background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+    border-radius:14px;padding:12px 18px;backdrop-filter:blur(4px);
+  }
+  .fact b{font-family:'Fraunces',serif;font-size:1.5rem;display:block;color:#fff}
+  .fact span{font-size:.82rem;color:#cfe0d2}
+  .cta{
+    display:inline-block;margin-top:36px;background:var(--lime);color:var(--moss-dark);
+    font-weight:700;text-decoration:none;padding:15px 30px;border-radius:100px;
+    box-shadow:0 12px 30px -12px rgba(200,230,90,.7);transition:transform .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px)}
+  .hero .doodle{position:absolute;right:-40px;bottom:-30px;width:260px;opacity:.9;pointer-events:none}
+  @media(max-width:640px){.hero .doodle{display:none}}
+
+  /* O QUE É */
+  section{padding:56px 0}
+  .lead-eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:12px}
+  h2.title{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:600;max-width:20ch}
+  .explain{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center;margin-top:28px}
+  @media(max-width:720px){.explain{grid-template-columns:1fr}}
+  .explain p{color:var(--muted);font-size:1.05rem;margin-bottom:14px}
+  .explain .illus{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);
+  }
+
+  /* CHECKLIST */
+  .prep{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.doc-grid{grid-template-columns:1fr}}
+  .doc{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:22px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .doc .ico{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(47,107,79,.12)}
+  .doc h3{font-size:1.1rem;font-weight:600;margin-bottom:4px}
+  .doc p{font-size:.9rem;color:var(--muted)}
+
+  /* PASSO A PASSO */
+  .steps{counter-reset:step}
+  .step{
+    display:grid;grid-template-columns:70px 1fr;gap:22px;
+    padding:26px 0;border-bottom:1px dashed var(--line);align-items:start;
+  }
+  .step:last-child{border-bottom:none}
+  .step .num{
+    counter-increment:step;
+    font-family:'Fraunces',serif;font-weight:900;font-size:2rem;
+    width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+    background:var(--moss);color:var(--lime);
+  }
+  .step .num::before{content:counter(step)}
+  .step h3{font-size:1.3rem;font-weight:600;margin-bottom:6px}
+  .step p{color:var(--muted)}
+  .step .tip{
+    margin-top:10px;font-size:.88rem;background:rgba(226,112,58,.1);
+    border-left:3px solid var(--clay);padding:8px 14px;border-radius:0 8px 8px 0;color:#8a4022;
+  }
+  .step a.inline{color:var(--moss);font-weight:600}
+
+  /* CUSTO */
+  .money{background:var(--moss-dark);color:#eef3ec}
+  .money h2{color:#fff}
+  .das{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.das{grid-template-columns:1fr}}
+  .das .box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px}
+  .das .box b{font-family:'Fraunces',serif;font-size:2rem;display:block;color:var(--lime)}
+  .das .box span{font-size:.9rem;color:#cdddd0}
+  .money .note{margin-top:22px;font-size:.9rem;color:#b9cabd}
+
+  /* FAQ */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2px 20px;margin-bottom:12px}
+  summary{cursor:pointer;font-weight:600;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';font-size:1.4rem;color:var(--moss);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 0 18px;color:var(--muted)}
+
+  /* CTA FINAL */
+  .final{background:linear-gradient(160deg,var(--clay),#c85a2b);color:#fff;text-align:center;border-radius:26px;margin:56px auto;padding:52px 26px;max-width:920px}
+  .final h2{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:600;color:#fff}
+  .final p{margin:14px auto 0;max-width:44ch;color:#ffe8dd}
+  .final .cta{background:#fff;color:var(--clay);box-shadow:none}
+
+  footer{text-align:center;padding:30px 22px 50px;color:var(--muted);font-size:.82rem}
+  footer a{color:var(--moss)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● Guia para iniciantes</span>
+    <h1>Abrir o seu <em>MEI</em> é mais fácil do que você imagina.</h1>
+    <p class="sub">Sem contador, sem fila e sem pagar nada. Em cerca de 15 minutos, você sai daqui com o seu CNPJ na mão. Vamos juntos, passo a passo.</p>
+    <div class="facts">
+      <div class="fact"><b>R$ 0</b><span>custo para abrir</span></div>
+      <div class="fact"><b>~15 min</b><span>tudo pela internet</span></div>
+      <div class="fact"><b>Na hora</b><span>CNPJ sai na mesma hora</span></div>
+    </div>
+    <a class="cta" href="#passos">Quero começar agora →</a>
+  </div>
+  <svg class="doodle" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="70" stroke="#c8e65a" stroke-width="2" opacity=".5"/>
+    <path d="M70 100l20 20 40-45" stroke="#c8e65a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</header>
+
+<!-- O QUE É -->
+<section>
+  <div class="wrap">
+    <div class="lead-eyebrow">Primeiro, o básico</div>
+    <h2 class="title">Afinal, o que é o MEI?</h2>
+    <div class="explain">
+      <div>
+        <p><strong>MEI</strong> quer dizer <strong>Microempreendedor Individual</strong>. É a forma mais simples de você virar “empresa” e trabalhar por conta própria de maneira legal.</p>
+        <p>Com ele você ganha um <strong>CNPJ</strong> (o “CPF da empresa”), pode <strong>emitir nota fiscal</strong>, e passa a contribuir para o <strong>INSS</strong> — o que te dá direito a aposentadoria, auxílio-doença e salário-maternidade.</p>
+        <p>Em troca, você paga <strong>um valor fixo baixinho por mês</strong> e pronto: nada de impostos complicados.</p>
+      </div>
+      <div class="illus">
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="260" height="140" rx="14" fill="#f6f2e9" stroke="#d9d2c2"/>
+          <rect x="20" y="30" width="260" height="34" rx="14" fill="#2f6b4f"/>
+          <rect x="20" y="50" width="260" height="14" fill="#2f6b4f"/>
+          <circle cx="42" cy="47" r="6" fill="#c8e65a"/>
+          <text x="60" y="52" font-family="Inter" font-size="13" fill="#fff" font-weight="600">Seu CNPJ</text>
+          <rect x="40" y="82" width="140" height="12" rx="6" fill="#cfe0d2"/>
+          <rect x="40" y="104" width="200" height="10" rx="5" fill="#e5ded0"/>
+          <rect x="40" y="122" width="170" height="10" rx="5" fill="#e5ded0"/>
+          <rect x="40" y="145" width="80" height="14" rx="7" fill="#e2703a"/>
+          <text x="80" y="156" font-family="Inter" font-size="9" fill="#fff" font-weight="700" text-anchor="middle">ATIVO</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUE PRECISO -->
+<section class="prep">
+  <div class="wrap">
+    <div class="lead-eyebrow">Antes de começar</div>
+    <h2 class="title">Separe estas 3 coisinhas</h2>
+    <div class="doc-grid">
+      <div class="doc">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#2f6b4f" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#2f6b4f" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div><h3>Seu CPF</h3><p>E a data de nascimento. Só isso já basta para se identificar.</p></div>
+      </div>
+      <div class="doc">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#2f6b4f" stroke-width="2"/><path d="M9 6V4h6v2" stroke="#2f6b4f" stroke-width="2"/></svg>
+        </div>
+        <div><h3>Título de eleitor <span style="font-weight:400">ou</span> recibo do IR</h3><p>O sistema pede um dos dois para confirmar que é você mesmo.</p></div>
+      </div>
+      <div class="doc">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 10l9-6 9 6v9a1 1 0 01-1 1H4a1 1 0 01-1-1z" stroke="#2f6b4f" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h3>Seu endereço</h3><p>Onde você mora ou trabalha. Pode ser a sua própria casa.</p></div>
+      </div>
+    </div>
+    <p style="margin-top:22px;color:var(--muted);font-size:.95rem">💡 Dica: se você já tem uma conta <strong>gov.br</strong>, o cadastro fica ainda mais rápido. Se não tiver, dá para criar na hora.</p>
+  </div>
+</section>
+
+<!-- PASSO A PASSO -->
+<section id="passos">
+  <div class="wrap">
+    <div class="lead-eyebrow">Mão na massa</div>
+    <h2 class="title">O passo a passo, sem enrolação</h2>
+    <div class="steps" style="margin-top:20px">
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Entre no site oficial</h3>
+          <p>Acesse o <strong>Portal do Empreendedor</strong>: <a class="inline" href="https://www.gov.br/mei" target="_blank" rel="noopener">gov.br/mei</a>. É o único site oficial e 100% gratuito. Clique em <strong>“Quero ser MEI”</strong> e depois em <strong>“Formalize-se”</strong>.</p>
+          <div class="tip">⚠️ Cuidado: existem sites que cobram para fazer isso. Não precisa pagar nada. Use só o gov.br.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Faça login com a conta gov.br</h3>
+          <p>Entre com seu CPF e senha. Ainda não tem conta? Clique em <strong>“Crie sua conta gov.br”</strong> e siga as instruções — leva 2 minutinhos.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Escolha o que você vai fazer</h3>
+          <p>Aqui você seleciona sua <strong>atividade</strong> (ex.: cabeleireiro, vendedor de roupas, desenvolvedor, motorista de app). Pode escolher uma principal e até 15 secundárias.</p>
+          <div class="tip">💡 Não sabe o nome exato? Vá digitando o que você faz que o sistema sugere as opções.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Preencha seus dados e endereço</h3>
+          <p>Confirme nome, endereço e onde o trabalho acontece. Diga também se você atende em <strong>casa, na rua, pela internet</strong> ou em um <strong>ponto fixo</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Confira tudo e confirme</h3>
+          <p>Leia o resumo com calma, marque as declarações de que está tudo certo e clique em <strong>“Continuar”</strong>. Pronto!</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Pegue o seu CNPJ 🎉</h3>
+          <p>Na mesma hora aparece o seu <strong>Certificado de Condição de MEI (CCMEI)</strong> — é o documento que prova que você já é uma empresa. <strong>Salve em PDF</strong> ou imprima. Parabéns, você é oficialmente um MEI!</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUSTO -->
+<section class="money">
+  <div class="wrap">
+    <div class="lead-eyebrow" style="color:var(--lime)">E depois de aberto?</div>
+    <h2 class="title">Quanto custa por mês</h2>
+    <p style="color:#cdddd0;margin-top:14px;max-width:52ch">Todo mês você paga uma única guia chamada <strong>DAS</strong>. O valor é fixo e baixo — muda um pouquinho conforme a sua atividade. Valores de <strong>2026</strong>:</p>
+    <div class="das">
+      <div class="box"><b>R$ 82,05</b><span>Comércio ou Indústria</span></div>
+      <div class="box"><b>R$ 86,05</b><span>Serviços</span></div>
+      <div class="box"><b>R$ 87,05</b><span>Comércio + Serviços</span></div>
+    </div>
+    <p class="note">
+      📌 O boleto vence todo dia <strong>20</strong> e você emite pelo app <strong>“MEI”</strong> ou no Portal do Simples Nacional.<br>
+      📌 Você pode faturar até <strong>R$ 81.000 por ano</strong> (média de R$ 6.750/mês). Passou disso, é hora de virar Microempresa.<br>
+      📌 Uma vez por ano (até <strong>31 de maio</strong>), faça a declaração anual — a <strong>DASN-SIMEI</strong>. É rapidinho e obrigatório, mesmo que você não tenha faturado nada.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="lead-eyebrow">Dúvidas rápidas</div>
+    <h2 class="title" style="margin-bottom:26px">Perguntas que todo mundo faz</h2>
+
+    <details>
+      <summary>Preciso pagar algo para abrir?</summary>
+      <p>Não. Abrir o MEI é totalmente gratuito pelo site gov.br/mei. Você só passa a pagar a guia mensal (DAS) depois que a empresa está aberta.</p>
+    </details>
+    <details>
+      <summary>Sou obrigado a ter contador?</summary>
+      <p>Não. O MEI foi feito justamente para você fazer tudo sozinho. Um contador é opcional, caso queira ajuda.</p>
+    </details>
+    <details>
+      <summary>E se eu não tiver faturamento em algum mês?</summary>
+      <p>Você continua pagando a guia mensal normalmente, porque ela também garante seus direitos no INSS (aposentadoria, auxílio-doença etc.). Sem faturamento, também é preciso fazer a declaração anual.</p>
+    </details>
+    <details>
+      <summary>Posso ser MEI e ter carteira assinada ao mesmo tempo?</summary>
+      <p>Na maioria dos casos, sim. Só atenção: servidores públicos têm regras próprias e nem sempre podem. Vale confirmar sua situação específica.</p>
+    </details>
+    <details>
+      <summary>Posso ter funcionário?</summary>
+      <p>Sim, o MEI pode contratar até 1 funcionário, que deve receber pelo menos o salário mínimo ou o piso da categoria.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="final">
+  <h2>Sua empresa a um clique de distância</h2>
+  <p>Abrir o CNPJ é o primeiro passo. Fazer o dinheiro do seu negócio trabalhar por você é o próximo — e é aí que a gente pode caminhar junto.</p>
+  <a class="cta" href="https://www.gov.br/mei" target="_blank" rel="noopener">Abrir meu MEI agora →</a>
+</div>
+
+<footer>
+  Conteúdo educativo e informativo · Valores e regras de 2026, sujeitos a alteração.<br>
+  Sempre confirme as informações oficiais no <a href="https://www.gov.br/mei" target="_blank" rel="noopener">Portal do Empreendedor (gov.br)</a>.
+</footer>
+
+</body>
+</html>
